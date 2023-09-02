@@ -1,6 +1,7 @@
 import { formatDistanceToNow } from 'date-fns';
 import packageJson from '../../../package.json';
 import themes from '../../../themes.json';
+import config from '../../../config.json';
 
 const macos = `
                     'c.
@@ -142,7 +143,7 @@ const getInfo = () => {
     visitedAt,
   )}\n`;
   message += `<span style="color: ${mainColor}">Author</span>: ${packageJson.author.name} (${packageJson.author.email})\n`;
-  message += `<span style="color: ${mainColor}">Donate</span>: <a href="${packageJson.funding.url}" target="_blank">${packageJson.funding.type}</a>\n`;
+  message += `<span style="color: ${mainColor}">Donate</span>: <a href="${config.funding.url}" target="_blank">${config.funding.type}</a>\n`;
 
   return message;
 };

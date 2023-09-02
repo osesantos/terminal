@@ -1,5 +1,6 @@
 import packageJson from '../../../package.json';
 import * as bin from './index';
+import config from '../../../config.json';
 
 export const help = async (args: string[]): Promise<string> => {
   const commands = Object.keys(bin).sort().join(', ');
@@ -20,15 +21,15 @@ export const date = async (args: string[]): Promise<string> => {
 };
 
 export const gui = async (args: string[]): Promise<string> => {
-  window.open('https://m4tt72.com', '_self');
+  window.open(`${config.social.blog}`, '_self');
 
   return 'Opening GUI version...';
 };
 
 export const email = async (args: string[]): Promise<string> => {
-  window.open('mailto:hi@nm4tt72.com');
+  window.open(`${config.social.email}`);
 
-  return 'Opening mailto:hi@m4tt72.com...';
+  return `Opening mailto:${config.social.email}...`;
 };
 
 export const vi = async (args: string[]): Promise<string> => {
@@ -53,34 +54,30 @@ export const sudo = async (args?: string[]): Promise<string> => {
 
 export const repo = async (args?: string[]): Promise<string> => {
   setTimeout(function () {
-    window.open('https://github.com/m4tt72/terminal', '_blank');
+    window.open('https://github.com/osesantos/terminal', '_blank');
   }, 1000);
 
   return 'Opening repository...';
 };
 
 export const donate = async (args?: string[]): Promise<string> => {
-  window.open(packageJson.funding.url, '_blank');
+  window.open(config.funding.url, '_blank');
 
   return 'Opening donation url...';
 };
 
 export const banner = (args?: string[]): string => {
   return `
-███╗   ███╗██╗  ██╗████████╗████████╗███████╗██████╗
-████╗ ████║██║  ██║╚══██╔══╝╚══██╔══╝╚════██║╚════██╗
-██╔████╔██║███████║   ██║      ██║       ██╔╝ █████╔╝
-██║╚██╔╝██║╚════██║   ██║      ██║      ██╔╝ ██╔═══╝
-██║ ╚═╝ ██║     ██║   ██║      ██║      ██║  ███████╗
-╚═╝     ╚═╝     ╚═╝   ╚═╝      ╚═╝      ╚═╝  ╚══════╝ v${packageJson.version}
+ #######   ######  ########  ######     ###    ##    ## ########  #######   ######  
+##     ## ##    ## ##       ##    ##   ## ##   ###   ##    ##    ##     ## ##    ## 
+##     ## ##       ##       ##        ##   ##  ####  ##    ##    ##     ## ##       
+##     ##  ######  ######    ######  ##     ## ## ## ##    ##    ##     ##  ######  
+##     ##       ## ##             ## ######### ##  ####    ##    ##     ##       ## 
+##     ## ##    ## ##       ##    ## ##     ## ##   ###    ##    ##     ## ##    ## 
+ #######   ######  ########  ######  ##     ## ##    ##    ##     #######   ###### 
+
+bG9va2luZyBmb3IgYSByZWQgdGVhbWVyIG9yIGEgcGVudGVzdGVyPyBMZXQncyB0YWxrIDpE 
 
 Type 'help' to see list of available commands.
-
---
-The project is open-source 🎉 type 'repo' to check out the repository.
-
-New 🎉: Try out the new 'theme' command. See all available themes <a href="https://github.com/m4tt72/terminal/tree/master/docs/themes">in the docs</a>.
-New 🎉: New command 'neofetch', for you linux.
---
 `;
 };
